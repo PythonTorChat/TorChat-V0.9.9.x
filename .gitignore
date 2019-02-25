@@ -102,3 +102,14 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+*~
+*.pyc
+torchat/src/Tor/hidden_service/
+torchat/src/Tor/tor_data
+torchat/src/buddy-list.txt
+torchat/src/torchat.ini
+
+torchat/bin
+torchat/release
+torchat/src/build
+torchat/src/dist

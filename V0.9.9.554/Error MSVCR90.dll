@@ -1,0 +1,445 @@
+
+C:\TC_Project\TorChat_py>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 509F-2F56
+
+ Directory of C:\TC_Project\TorChat_py
+
+05/11/2015  10:47 AM    <DIR>          .
+05/11/2015  10:47 AM    <DIR>          ..
+05/11/2015  10:33 AM    <DIR>          V0.9.9.553a
+               0 File(s)              0 bytes
+               3 Dir(s)   5,639,630,848 bytes free
+
+C:\TC_Project\TorChat_py>cd v0.9.9.553a
+
+C:\TC_Project\TorChat_py\V0.9.9.553a>cd src
+
+C:\TC_Project\TorChat_py\V0.9.9.553a\src>python make_release_zip.py
+
+cleaning .
+trying to unlink .\*.pyo
+trying to unlink .\*.pyc
+unlinked .\config.pyc
+unlinked .\dlg.pyc
+unlinked .\dlg_settings.pyc
+unlinked .\tc_client.pyc
+unlinked .\tc_gui.pyc
+unlinked .\tc_mac.pyc
+unlinked .\tc_notification.pyc
+unlinked .\version.pyc
+trying to unlink .\*.log
+trying to unlink .\*.tmp
+trying to unlink .\*~
+trying to unlink .\*offline*
+trying to unlink .\*incoming*
+trying to unlink .\DEADJOE
+
+cleaning translations
+trying to unlink translations\*.pyo
+trying to unlink translations\*.pyc
+unlinked translations\lang_bg.pyc
+unlinked translations\lang_de.pyc
+unlinked translations\lang_en.pyc
+unlinked translations\lang_fr.pyc
+unlinked translations\lang_hu.pyc
+unlinked translations\lang_it.pyc
+unlinked translations\lang_nl.pyc
+unlinked translations\lang_pl.pyc
+unlinked translations\lang_pt.pyc
+unlinked translations\lang_ru.pyc
+unlinked translations\lang_sv.pyc
+unlinked translations\lang_zh.pyc
+unlinked translations\__init__.pyc
+trying to unlink translations\*.log
+trying to unlink translations\*.tmp
+trying to unlink translations\*~
+trying to unlink translations\*offline*
+trying to unlink translations\*incoming*
+trying to unlink translations\DEADJOE
+
+cleaning SocksiPy
+trying to unlink SocksiPy\*.pyo
+trying to unlink SocksiPy\*.pyc
+unlinked SocksiPy\socks.pyc
+unlinked SocksiPy\__init__.pyc
+trying to unlink SocksiPy\*.log
+trying to unlink SocksiPy\*.tmp
+trying to unlink SocksiPy\*~
+trying to unlink SocksiPy\*offline*
+trying to unlink SocksiPy\*incoming*
+trying to unlink SocksiPy\DEADJOE
+
+
+C:\Python27\python.exe c:\pyinstaller-2.1\utils\Build.py torchat_windows.spec
+250 INFO: Testing for ability to set icons, version resources...
+400 INFO: ... resource update available
+410 INFO: UPX is not available.
+460 INFO: Processing hook hook-os
+611 INFO: Processing hook hook-time
+621 INFO: Processing hook hook-cPickle
+731 INFO: Processing hook hook-_sre
+951 INFO: Processing hook hook-cStringIO
+1081 INFO: Processing hook hook-encodings
+1101 INFO: Processing hook hook-codecs
+2093 WARNING: Ignoring obsolete auto-added script c:\pyinstaller-2.1\support\_mountzlib.py
+2093 WARNING: Ignoring obsolete auto-added script c:\pyinstaller-2.1\support\useUnicode.py
+Traceback (most recent call last):
+  File "c:\pyinstaller-2.1\utils\Build.py", line 24, in <module>
+    run()
+  File "c:\pyinstaller-2.1\utils\..\PyInstaller\cliutils\build.py", line 37, in run
+    PyInstaller.build.main(None, args[0], **opts.__dict__)
+  File "c:\pyinstaller-2.1\utils\..\PyInstaller\build.py", line 1924, in main
+    build(specfile, kw.get('distpath'), kw.get('workpath'), kw.get('clean_build'))
+  File "c:\pyinstaller-2.1\utils\..\PyInstaller\build.py", line 1873, in build
+    execfile(spec)
+  File "torchat_windows.spec", line 5, in <module>
+    pathex=['.'])
+  File "c:\pyinstaller-2.1\utils\..\PyInstaller\build.py", line 419, in __init__
+    script_toplevel_dir = misc.get_path_to_toplevel_modules(script)
+  File "c:\pyinstaller-2.1\utils\..\PyInstaller\utils\misc.py", line 126, in get_path_to_toplevel_modules
+    files = set(os.listdir(curr_dir))
+WindowsError: [Error 3] The system cannot find the path specified: 'c:\\pyinstaller-2.1\\support/*.*'
+!!! pyinstaller did not run properly
+
+C:\TC_Project\TorChat_py\V0.9.9.553a\src>python make_release_zip.py
+
+cleaning .
+trying to unlink .\*.pyo
+trying to unlink .\*.pyc
+unlinked .\version.pyc
+trying to unlink .\*.log
+trying to unlink .\*.tmp
+trying to unlink .\*~
+trying to unlink .\*offline*
+trying to unlink .\*incoming*
+trying to unlink .\DEADJOE
+
+cleaning translations
+trying to unlink translations\*.pyo
+trying to unlink translations\*.pyc
+trying to unlink translations\*.log
+trying to unlink translations\*.tmp
+trying to unlink translations\*~
+trying to unlink translations\*offline*
+trying to unlink translations\*incoming*
+trying to unlink translations\DEADJOE
+
+cleaning SocksiPy
+trying to unlink SocksiPy\*.pyo
+trying to unlink SocksiPy\*.pyc
+trying to unlink SocksiPy\*.log
+trying to unlink SocksiPy\*.tmp
+trying to unlink SocksiPy\*~
+trying to unlink SocksiPy\*offline*
+trying to unlink SocksiPy\*incoming*
+trying to unlink SocksiPy\DEADJOE
+The system cannot find the file specified.
+
+
+C:\Python27\python.exe c:\pyinstaller-2.1\utils\Build.py torchat_windows.spec
+330 INFO: Testing for ability to set icons, version resources...
+840 INFO: ... resource update available
+840 INFO: UPX is not available.
+891 INFO: Processing hook hook-os
+1062 INFO: Processing hook hook-time
+1101 INFO: Processing hook hook-cPickle
+1221 INFO: Processing hook hook-_sre
+1471 INFO: Processing hook hook-cStringIO
+1611 INFO: Processing hook hook-encodings
+1632 INFO: Processing hook hook-codecs
+2633 WARNING: Ignoring obsolete auto-added script c:\pyinstaller-2.1\support\_mountzlib.py
+2633 WARNING: Ignoring obsolete auto-added script c:\pyinstaller-2.1\support\useUnicode.py
+2633 INFO: Extending PYTHONPATH with c:\pyinstaller-2.1\support
+2643 INFO: Extending PYTHONPATH with c:\pyinstaller-2.1\support
+2643 INFO: Extending PYTHONPATH with C:\TC_Project\TorChat_py\V0.9.9.553a\src
+2643 INFO: checking Analysis
+2643 INFO: building Analysis because out00-Analysis.toc non existent
+2643 INFO: running Analysis out00-Analysis.toc
+2643 INFO: Adding Microsoft.VC90.CRT to dependent assemblies of final executable
+4325 INFO: Searching for assembly x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_none ...
+4325 WARNING: Assembly not found
+4325 ERROR: Assembly x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_none not found
+4406 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\python.exe
+4516 INFO: Searching for assembly x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_none ...
+4516 WARNING: Assembly not found
+4516 ERROR: Assembly x86_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.21022.8_none not found
+4717 WARNING: lib not found: MSVCR90.dll dependency of C:\Windows\system32\python27.dll
+4717 INFO: Analyzing c:\pyinstaller-2.1\PyInstaller\loader\_pyi_bootstrap.py
+4736 INFO: Processing hook hook-os
+4766 INFO: Processing hook hook-site
+4806 INFO: Processing hook hook-encodings
+4947 INFO: Processing hook hook-time
+4967 INFO: Processing hook hook-cPickle
+5056 INFO: Processing hook hook-_sre
+5207 INFO: Processing hook hook-cStringIO
+5337 INFO: Processing hook hook-codecs
+5988 INFO: Processing hook hook-pydoc
+6299 INFO: Processing hook hook-email
+6418 INFO: Processing hook hook-httplib
+6519 INFO: Processing hook hook-email.message
+6659 INFO: Analyzing c:\pyinstaller-2.1\PyInstaller\loader\pyi_importers.py
+6730 INFO: Analyzing c:\pyinstaller-2.1\PyInstaller\loader\pyi_archive.py
+6819 INFO: Analyzing c:\pyinstaller-2.1\PyInstaller\loader\pyi_carchive.py
+6889 INFO: Analyzing c:\pyinstaller-2.1\PyInstaller\loader\pyi_os_path.py
+6899 INFO: Analyzing torchat.py
+7840 INFO: Processing hook hook-distutils
+8301 INFO: Hidden import 'codecs' has been found otherwise
+8301 INFO: Hidden import 'encodings' has been found otherwise
+8312 INFO: Looking for run-time hooks
+8361 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\DLLs\select.pyd
+8431 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\DLLs\unicodedata.pyd
+8451 INFO: Adding Microsoft.Windows.Common-Controls to dependent assemblies of final executable
+9042 WARNING: lib not found: MSVCP90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\_controls_.pyd
+9072 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\_controls_.pyd
+9543 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\_windows_.pyd
+9733 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\DLLs\_hashlib.pyd
+9793 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\DLLs\bz2.pyd
+9903 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\DLLs\_ssl.pyd
+10434 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\_core_.pyd
+10835 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\_misc_.pyd
+10935 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\DLLs\_ctypes.pyd
+11386 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\_gdi_.pyd
+11467 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\DLLs\_socket.pyd
+13238 WARNING: lib not found: MSVCP90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxmsw30u_core_vc90.dll
+13278 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxmsw30u_core_vc90.dll
+14029 WARNING: lib not found: MSVCP90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxmsw30u_adv_vc90.dll
+14059 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxmsw30u_adv_vc90.dll
+14330 WARNING: lib not found: MSVCP90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxbase30u_vc90.dll
+14360 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxbase30u_vc90.dll
+14901 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxmsw30u_html_vc90.dll
+14921 WARNING: lib not found: MSVCP90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxmsw30u_html_vc90.dll
+15082 WARNING: lib not found: MSVCR90.dll dependency of C:\Python27\lib\site-packages\wx-3.0-msw\wx\wxbase30u_net_vc90.dll
+15101 INFO: Using Python library C:\Windows\system32\python27.dll
+16653 INFO: Warnings written to C:\TC_Project\TorChat_py\V0.9.9.553a\src\build\torchat_windows\warntorchat_windows.txt
+16674 INFO: checking PYZ
+16674 INFO: rebuilding out00-PYZ.toc because out00-PYZ.pyz is missing
+16674 INFO: building PYZ (ZlibArchive) out00-PYZ.toc
+19597 INFO: checking PKG
+19608 INFO: rebuilding out00-PKG.toc because out00-PKG.pkg is missing
+19608 INFO: building PKG (CArchive) out00-PKG.pkg
+19738 INFO: Adding u'Microsoft.VC90.CRT' to dependent assemblies of 'C:\\Users\\Mike\\AppData\\Roaming\\pyinstaller\\bincache00_py27
+\\_controls_.pyd'
+19748 INFO: Updating manifest in C:\Users\Mike\AppData\Roaming\pyinstaller\bincache00_py27\_controls_.pyd
+19748 INFO: Updating resource type 24 name 2 language 1033
+19789 INFO: Adding u'Microsoft.VC90.CRT' to dependent assemblies of 'C:\\Users\\Mike\\AppData\\Roaming\\pyinstaller\\bincache00_py27
+\\_windows_.pyd'
+19789 INFO: Updating manifest in C:\Users\Mike\AppData\Roaming\pyinstaller\bincache00_py27\_windows_.pyd
+19799 INFO: Updating resource type 24 name 2 language 1033
+19908 INFO: Adding u'Microsoft.VC90.CRT' to dependent assemblies of 'C:\\Users\\Mike\\AppData\\Roaming\\pyinstaller\\bincache00_py27
+\\_core_.pyd'
+19908 INFO: Updating manifest in C:\Users\Mike\AppData\Roaming\pyinstaller\bincache00_py27\_core_.pyd
+19908 INFO: Updating resource type 24 name 2 language 1033
+19938 INFO: Adding u'Microsoft.VC90.CRT' to dependent assemblies of 'C:\\Users\\Mike\\AppData\\Roaming\\pyinstaller\\bincache00_py27
+\\_misc_.pyd'
+19948 INFO: Updating manifest in C:\Users\Mike\AppData\Roaming\pyinstaller\bincache00_py27\_misc_.pyd
+19948 INFO: Updating resource type 24 name 2 language 1033
+19998 INFO: Adding u'Microsoft.VC90.CRT' to dependent assemblies of 'C:\\Users\\Mike\\AppData\\Roaming\\pyinstaller\\bincache00_py27
+\\_gdi_.pyd'
+20008 INFO: Updating manifest in C:\Users\Mike\AppData\Roaming\pyinstaller\bincache00_py27\_gdi_.pyd
+20008 INFO: Updating resource type 24 name 2 language 1033
+23293 INFO: checking EXE
+23303 INFO: rebuilding out00-EXE.toc because torchat.exe missing
+23303 INFO: building EXE from out00-EXE.toc
+23303 INFO: SRCPATH [('icons\\torchat.ico', None)]
+23323 INFO: Updating icons from ['icons\\torchat.ico'] to c:\users\mike\appdata\local\temp\tmp_xccyz
+23323 INFO: Writing RT_GROUP_ICON 0 resource with 62 bytes
+23323 INFO: Writing RT_ICON 1 resource with 67624 bytes
+23323 INFO: Writing RT_ICON 2 resource with 9640 bytes
+23333 INFO: Writing RT_ICON 3 resource with 4264 bytes
+23333 INFO: Writing RT_ICON 4 resource with 1128 bytes
+23343 INFO: Appending archive to EXE C:\TC_Project\TorChat_py\V0.9.9.553a\src\dist\torchat.exe
+
+
+putting together the contents of the bin folder
+trying to copy dist\torchat.exe to ..\bin
+copied dist\torchat.exe
+trying to copy portable.txt to ..\bin
+copied portable.txt
+trying to copy Tor\*.* to ..\bin\Tor
+copied Tor\libeay32.dll
+copied Tor\libevent-2-0-5.dll
+copied Tor\libevent_core-2-0-5.dll
+copied Tor\libevent_extra-2-0-5.dll
+copied Tor\libgcc_s_sjlj-1.dll
+copied Tor\libgmp-10.dll
+copied Tor\libgmpxx-4.dll
+copied Tor\libssp-0.dll
+copied Tor\ssleay32.dll
+copied Tor\tor.exe
+copied Tor\tor.sh
+copied Tor\torrc.txt
+copied Tor\zlib1.dll
+trying to copy icons\*.png to ..\bin\icons
+copied icons\away-dpr.png
+copied icons\away.png
+copied icons\connecting-dpr.png
+copied icons\connecting.png
+copied icons\event.png
+copied icons\offline-dpr.png
+copied icons\offline.png
+copied icons\online-dpr.png
+copied icons\online.png
+copied icons\torchat.png
+copied icons\xa-dpr.png
+copied icons\xa.png
+trying to copy icons\*.ico to ..\bin\icons
+copied icons\torchat.ico
+
+
+creating the zip files
+trying to unlink release\torchat-windows-0.9.9.553.zip
+unlinked release\torchat-windows-0.9.9.553.zip
+trying to unlink release\torchat-source-0.9.9.553.zip
+unlinked release\torchat-source-0.9.9.553.zip
+
+opening release\torchat-windows-0.9.9.553.zip
+adding bin\icons
+adding bin\portable.txt
+adding bin\Tor
+adding bin\torchat.exe
+adding bin\Tor\libeay32.dll
+adding bin\Tor\libevent-2-0-5.dll
+adding bin\Tor\libevent_core-2-0-5.dll
+adding bin\Tor\libevent_extra-2-0-5.dll
+adding bin\Tor\libgcc_s_sjlj-1.dll
+adding bin\Tor\libgmp-10.dll
+adding bin\Tor\libgmpxx-4.dll
+adding bin\Tor\libssp-0.dll
+adding bin\Tor\ssleay32.dll
+adding bin\Tor\tor.exe
+adding bin\Tor\tor.sh
+adding bin\Tor\torrc.txt
+adding bin\Tor\zlib1.dll
+adding bin\icons\away-dpr.png
+adding bin\icons\away.png
+adding bin\icons\connecting-dpr.png
+adding bin\icons\connecting.png
+adding bin\icons\event.png
+adding bin\icons\offline-dpr.png
+adding bin\icons\offline.png
+adding bin\icons\online-dpr.png
+adding bin\icons\online.png
+adding bin\icons\torchat.ico
+adding bin\icons\torchat.png
+adding bin\icons\xa-dpr.png
+adding bin\icons\xa.png
+closing release\torchat-windows-0.9.9.553.zip
+
+opening release\torchat-windows-0.9.9.553.zip
+adding doc\howto_mac_osx.html
+adding doc\howto_second_instance.html
+adding src\config.py
+adding src\dlg.py
+adding src\dlg_settings.py
+adding src\make_debian_package.py
+adding src\make_release_zip.py
+adding src\tc_client.py
+adding src\tc_gui.py
+adding src\tc_mac.py
+adding src\tc_notification.py
+adding src\torchat.py
+adding src\version.py
+adding src\make_release_zip.spec
+adding src\torchat.spec
+adding src\torchat_linux.spec
+adding src\torchat_windows.spec
+adding src\portable.txt
+adding src\changelog.txt
+adding src\LICENSE
+adding src\translations\readme.txt
+adding src\translations\lang_bg.py
+adding src\translations\lang_de.py
+adding src\translations\lang_en.py
+adding src\translations\lang_fr.py
+adding src\translations\lang_hu.py
+adding src\translations\lang_it.py
+adding src\translations\lang_nl.py
+adding src\translations\lang_pl.py
+adding src\translations\lang_pt.py
+adding src\translations\lang_ru.py
+adding src\translations\lang_sv.py
+adding src\translations\lang_zh.py
+adding src\translations\insert_missing.py
+adding src\translations\__init__.py
+adding src\SocksiPy\socks.py
+adding src\SocksiPy\__init__.py
+adding src\SocksiPy\BUGS
+adding src\SocksiPy\LICENSE
+adding src\SocksiPy\README
+adding src\icons\away-dpr.png
+adding src\icons\away.png
+adding src\icons\connecting-dpr.png
+adding src\icons\connecting.png
+adding src\icons\event.png
+adding src\icons\offline-dpr.png
+adding src\icons\offline.png
+adding src\icons\online-dpr.png
+adding src\icons\online.png
+adding src\icons\torchat.png
+adding src\icons\xa-dpr.png
+adding src\icons\xa.png
+adding src\icons\torchat.ico
+adding src\Tor\tor.sh
+adding src\Tor\torrc.txt
+closing release\torchat-windows-0.9.9.553.zip
+
+opening release\torchat-source-0.9.9.553.zip
+adding doc\howto_mac_osx.html
+adding doc\howto_second_instance.html
+adding src\config.py
+adding src\dlg.py
+adding src\dlg_settings.py
+adding src\make_debian_package.py
+adding src\make_release_zip.py
+adding src\tc_client.py
+adding src\tc_gui.py
+adding src\tc_mac.py
+adding src\tc_notification.py
+adding src\torchat.py
+adding src\version.py
+adding src\make_release_zip.spec
+adding src\torchat.spec
+adding src\torchat_linux.spec
+adding src\torchat_windows.spec
+adding src\portable.txt
+adding src\changelog.txt
+adding src\LICENSE
+adding src\translations\readme.txt
+adding src\translations\lang_bg.py
+adding src\translations\lang_de.py
+adding src\translations\lang_en.py
+adding src\translations\lang_fr.py
+adding src\translations\lang_hu.py
+adding src\translations\lang_it.py
+adding src\translations\lang_nl.py
+adding src\translations\lang_pl.py
+adding src\translations\lang_pt.py
+adding src\translations\lang_ru.py
+adding src\translations\lang_sv.py
+adding src\translations\lang_zh.py
+adding src\translations\insert_missing.py
+adding src\translations\__init__.py
+adding src\SocksiPy\socks.py
+adding src\SocksiPy\__init__.py
+adding src\SocksiPy\BUGS
+adding src\SocksiPy\LICENSE
+adding src\SocksiPy\README
+adding src\icons\away-dpr.png
+adding src\icons\away.png
+adding src\icons\connecting-dpr.png
+adding src\icons\connecting.png
+adding src\icons\event.png
+adding src\icons\offline-dpr.png
+adding src\icons\offline.png
+adding src\icons\online-dpr.png
+adding src\icons\online.png
+adding src\icons\torchat.png
+adding src\icons\xa-dpr.png
+adding src\icons\xa.png
+adding src\icons\torchat.ico
+adding src\Tor\tor.sh
+adding src\Tor\torrc.txt
+closing release\torchat-source-0.9.9.553.zip
+
+C:\TC_Project\TorChat_py\V0.9.9.553a\src>
