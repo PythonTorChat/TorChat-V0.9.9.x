@@ -1,0 +1,29 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+Include Sub Directories=1
+Project Tagfile=
+Project Wordfile=
+Filter=
+Create Tagfile=0
+[Files]
+0=changelog.txt
+1=config.py
+2=dlg.py
+3=dlg_settings.py
+4=make_debian_package.py
+5=make_release_zip.py
+6=tc_client.py
+7=tc_gui.py
+8=tc_mac.py
+9=tc_notification.py
+10=torchat.py
+11=version.py
+12=SocksiPy\socks.py
+13=translations\insert_missing.py
+14=translations\lang_en.py
+15=build\torchat_windows\warntorchat_windows.txt
+[Backup]
+LastComment=

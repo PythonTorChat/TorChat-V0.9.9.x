@@ -1,0 +1,93 @@
+#############################################################################
+##
+## torrc.txt for OnionChat
+##
+## OnionChat communicates exclusively via your hidden service address 
+## (i.e. your OnionChat ID) over port 11009 over the TOR network
+##
+## This is the configuration file for the portable instance of Tor.
+## You will only have to make changes here if you want to run a second
+## instance of OnionChat on the same machine. See the Docs/HowTo.
+##
+#############################################################################
+##
+## If you want to run multiple instances, change SocksPort
+## and the second (ONLY THE SECOND) port in HiddenServicePort below
+## to something like (for example) this:
+##
+##   SocksPort 12109
+##   HiddenServicePort 11009 127.0.0.1:12009
+##
+##   SocksPort 13109
+##   HiddenServicePort 11009 127.0.0.1:13009
+##
+## -- Remember to change these same numbers in torchat.ini -- in the sections 
+## [tor_portable] and [client] also. There also exists a more detailed HowTo.
+##
+#############################################################################
+##
+## IMPORTANT: NEVER, *EVER* change the FIRST 11009 in HiddenServicePort, this 
+## is the port INSIDE the tor tunnel. This number is hardcoded, but since it 
+## is inside the tunnel it cannot collide, no matter how many instances you run. 
+## You must change only the second number, the forwarding target, as shown above.
+##
+#############################################################################
+
+SocksPort 11109
+
+## we don't use the control port currently, so leave this alone
+# ControlPort 11119 
+
+## INCOMING connections for the hidden service arrive at 11009 
+## and will be forwarded to OnionChat at 127.0.0.1:11009
+HiddenServiceDir hidden_service
+HiddenServicePort 11009 127.0.0.1:11009
+
+## where should tor store it's cache files
+DataDirectory tor_data
+
+## some tuning 
+AvoidDiskWrites 1
+LongLivedPorts 11009
+
+# Try to build a circuit for 50 seconds 
+LearnCircuitBuildTimeout 1
+CircuitBuildTimeout 50
+# Rotate to a new circuit after 45 seconds
+CircuitStreamTimeout 45
+
+# Close HS connections that mis-behave
+CloseHSClientCircuitsImmediatelyOnTimeout 0
+CloseHSServiceRendCircuitsImmediatelyOnTimeout 0
+
+# Enable less than default of 32 circuits pending,  Reduced number connects faster - JM
+MaxClientCircuitsPending 20
+
+# Reduce the timeout for socks client connection to 51 seconds (default 2 minutes), just 1 second more than CircuitBuildTimeout
+SocksTimeout 51
+
+# OnionChat does a loopback connection
+ClientRejectInternalAddresses 0
+UseNTorHandshake 1
+
+# Fetch directory authority immediately, to reduce the impact of Tor process reload
+FetchDirInfoEarly 1
+#FetchDirInfoExtraEarly 1
+
+ExcludeSingleHopRelays 1
+
+# release after idle 10 minutes (default 1 hour)
+CircuitIdleTimeout 600
+
+# we will try to pick a total of NUM routers as long-term entries for our circuits. (default 3)
+NumEntryGuards 5   
+
+## You can uncomment the lines below to log Tor's activity to the
+## console or to a log file. Use this only during debugging! 
+## Turning off SaveLogging will leave sensitive information on your disk,
+## the built in default is save logging turned on (set to 1).
+## so don't remove the # from that line unless you need it
+## and remember to put it in again, after you are done.
+#Log info File tor.log
+#Log info stdout
+#SafeLogging 0
