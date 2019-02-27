@@ -26,28 +26,32 @@ import config
 #
 # First Section is buddycount with single field with the count
 #
-BUDDYCOUNT = "TorChat"	     # Section Name
+BUDDYCOUNT = "0_TorChat"	   # Section Name
 BCOUNT = "BuddyCount"        # Number buddies
 #
 # Next section is the buddylist with the buddies in display order. "000000" is myself and is never moved.
 #    Buddies are listed with a 6 digit numeric ID that mirrors the position in the display list
 #
-BUDDYLIST = "BuddyList"      # List of buddies HS id's by number. This is where position in display list is managed
+BUDDYLIST = "1_BuddyList"    # List of buddies HS id's by number. This is where position in display list is managed
 # 000000-999999 (artifical limit of 1,000,000 buddies)
 #
 # Next is sections by buddy with the HS address as the Section ID.
 #
-BUDDYADDR = "HSAddress"      # Buddy's Hidden Service Address aka TorChat ID / address
+BUDDYADDR = "HSAddress"      # Buddy's Hidden Service Address aka OnionChat ID / address
 BUDDYDNAME = "DisplayName"   # Either Profile name -or- override from user edit
 BUDDYNOTES = "BuddyNotes"    # User entered notes
 BUDDYPNAME = "ProfileName"   # Transmitted Profile name
-BUDDYPNAME = "ProfileDecor"  # Transmitted Profile decoration
+BUDDYDECOR = "ProfileDecor"  # Transmitted Profile decoration
 BUDDYCLIENT = "ChatClient"   # Transmitted Chat Client 
 BUDDYVERSION = "ChatVersion" # Transmitted Chat Client Version
 BUDDYPTEXT = "ProfileText"   # Transmitted Profile Text
 BUDDYSTATUS = "ChatStatus"   # Available or XA (Extended Away) - Available, follows user status, XA always sends XA
 BUDDYMASK = "ActionMask"     # Features enable / disable (xmit files allowed, etc.)
-
+BUDDYHPOS = "ChatWinHPos"    # Saved Chat window Horizontal position
+BUDDYVPOS = "ChatWinVPos"    # Saved Chat window Vertical position
+BUDDYWSIZE = "ChatWinWSize"  # Saved Chat window Window "Sash" size
+BUDDYHSIZE = "ChatWinHSize"  # Saved Chat window horizontal size
+BUDDYVSIZE = "ChatWinVSize"  # Saved Chat window vertical size
 
 def isWindows():
     return sys.platform.startswith("win")
@@ -92,7 +96,7 @@ class OrderedRawBConfigParser(ConfigParser.RawConfigParser):
                              (key, str(self._sections[section][key]).replace('\n', '\n\t')))
             fp.write("\n")
 
-def readConfig():
+def initBuddyConfig():
     global buddy_file_name
     global buddy_config
     bdir = config.getDataDir()
@@ -101,6 +105,7 @@ def readConfig():
     buddy_file_name = bdir + "/buddy-list.ini"
     buddy_config = OrderedRawBConfigParser()
 
+def readConfig():
     #remove the BOM (notepad saves with BOM)
     if os.path.exists(buddy_file_name):
         f = file(buddy_file_name,'r+b')
@@ -137,7 +142,7 @@ def get(section, option):
         buddy_config.add_section(section)
     if not buddy_config.has_option(section, option):
         value = bconfig_defaults[section, option]
-        set(section, option, value)
+        bset(section, option, value)
     value = buddy_config.get(section, option)
     if type(value) == str:
         try:
@@ -198,3 +203,13 @@ def bset(section, option, value):
     buddy_config.set(section, option, value)
     writeConfig()
 
+def b_del_section(section):
+    if  buddy_config.has_section(section):
+        return buddy_config.remove_section(section)
+    return False
+
+def b_del_option(section, option):
+    if  buddy_config.has_option(section, option):
+        return buddy_config.remove_option(section, option)
+    return False
+    

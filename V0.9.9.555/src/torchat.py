@@ -19,7 +19,7 @@
 ##############################################################################
 
 import config
-import buddyconfig
+#import buddyconfig
 import wxversion
 if config.isMac():
     if wxversion.checkInstalled('3.0'):
@@ -42,7 +42,7 @@ else:
         print "(2) wxversion screwed up, this is harmless, ignoring it."
 
 import wx
-import os
+#import os
 import tc_client
 import tc_gui
         
