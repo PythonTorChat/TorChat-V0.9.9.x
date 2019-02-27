@@ -3,6 +3,7 @@ Working updates to the Original TorChat.
 
 Future version 1.0.0.1 - Planned release for Python V3 
 
+
 Future version 0.9.9.556 (soon)
 - file transfer from older versions blocked by default. The potential for unwanted file fragments 
   to be deposited on your computer by a malicious actor is extremely serious.
