@@ -36,6 +36,8 @@ import version
 
 TORCHAT_PORT = 11009 #do NOT change this.
 TOR_CONFIG = "tor" #the name of the active section in the .ini file
+TOR_ADDRESS_LEN = 16
+TOR_V3_ADDRESS_LEN = 56
 STATUS_OFFLINE = 0
 STATUS_OFFLINE_LOG = 1
 STATUS_HANDSHAKE = 2
@@ -653,43 +655,62 @@ class BuddyList(object):
         self.connections = 0
 
         self.list = []
+        buddyconfig.initBuddyConfig()
         #
-        # TorChat V0.10.0.5 -- buddylist.txt is migrated to buddylist.ini and renamed to oldbuddylist.txt
+        # TorChat V0.9.9.555 -- buddylist.txt is migrated to buddylist.ini and renamed to oldbuddylist.txt
         # ----  If buddylist.txt exists, make the conversion and rename the file. (One time thing) ----
         #
         filename = os.path.join(config.getDataDir(), "buddy-list.txt")
+        my_address = config.get("client", "own_hostname")
         if os.path.exists(filename):
-            newfilename = os.path.join(config.getDataDir(), "oldbuddylist.txt")
-            self.oldbuddylist(filename, newfilename)
+            newfilename = os.path.join(config.getDataDir(), "old-buddy-list.txt")
+            # rename the file to show we are moved to the .ini file
+            try:
+                os.rename(filename, newfilename)
+            except:
+                pass
+            self.oldbuddylist(newfilename, my_address)	# pound it into an ini file
         #
         # end buddy-list.txt to buddylist.ini conversion
         #
-        #MW FIXME - work to do here w/buddylist.ini
+        buddyconfig.readConfig() # init and read file
         #
-        found = False
-        for buddy in self.list:
-            if buddy.address == config.get("client", "own_hostname"):
-                found = True  #MW - This is us
-                buddy.profile_decor = config.get("profile", "decor")
-                buddy.profile_address = buddy.decorateAddress()
-                if buddy.name == u"":
-                    buddy.name = config.get("profile", "name")
-                    if buddy.name == u"":
-                        buddy.name = u"Myself"  #MW - Local end not allowed to be a blank
-                        config.cset("profile", "name", buddy.name)
-                self.own_buddy = buddy
-                self.own_buddy.status = STATUS_ONLINE
-                break
+        # load the buddies from the buddy-list.ini
+        #
+        self.count = buddyconfig.getint(buddyconfig.BUDDYCOUNT, buddyconfig.BCOUNT)
+        if self.count == 0: #JM: virgin install
+            #module_logger.log(config.LOG, "adding own hostname %s to list" % my_address)
+            print "(1) adding own hostname to list"
+            self.count = 1 # we do count after all.
+            buddyconfig.bset(buddyconfig.BUDDYCOUNT, buddyconfig.BCOUNT, self.count)
+            buddyconfig.bset(buddyconfig.BUDDYLIST, buddyconfig.findex(0), my_address)
+            buddyconfig.bset(my_address, buddyconfig.BUDDYDNAME, "Myself" )
 
-        if not found:
-            print "(1) adding own hostname %s to list" % config.get("client", "own_hostname")
-            if config.get("client", "own_hostname") != "0000000000000000":
-                name = u"myself"    #MW - keep the old TorChat default behavior
-                self.own_buddy = Buddy(config.get("client", "own_hostname"),
-                                 self,
-                                 name)
-                self.addBuddy(self.own_buddy)
-                self.own_buddy.status = STATUS_ONLINE
+        for ndx in range(0, self.count):        
+            addy = buddyconfig.getWithDefault(buddyconfig.BUDDYLIST, buddyconfig.findex(ndx), u"nada")
+            # fix an inherited buddy-list (new HS, etc.)
+            if ndx==0 and addy != my_address:
+                # create own_buddy first in position 0 (never fear, the save will fix the count)
+                name = "Myself"
+                buddy = Buddy(my_address, self, name)
+                buddy.display_index = ndx
+                buddy.modified = True
+                self.addBuddy(buddy) # first in list.... No worries, be happy
+
+            if addy != u"nada":
+                name = buddyconfig.get(addy, buddyconfig.BUDDYDNAME )
+                buddy = Buddy(addy, self, name)
+                # append it to the list
+                buddy.modified = True
+                if not self.addBuddy(buddy):
+                    module_logger.log(config.LOG, "a duplicate in buddy-list.ini was found")
+                
+                if ndx == 0:
+                    buddy.profile_decor = config.get("profile", "decor")
+                    buddy.profile_address = buddy.decorateAddress()
+                    buddy.modified = True
+                    self.own_buddy = buddy
+
         # the own avatar is set by the GUI.
         # Only the GUI knows how to deal with graphics, so we just
         # provide these variables, if the GUI puts the 64*64*24 RGB bitmaps
@@ -735,38 +756,72 @@ class BuddyList(object):
         # this is the optimal spot to notify the GUI to redraw the list
         self.gui(CB_TYPE_LIST_CHANGED, None)
 
-    def oldbuddylist(self, filename, newname):
+    #
+    #  MW - Queued for deletion after all legacy TorChat clients have been upgraded.
+    #
+    def oldbuddylist(self, filename, my_addy):
+        #
+        # Just transfer the TorChat buddy-list.txt to the OnionChat buddy-list.ini
+        #  -- at some future point, this can go away --
+        #
         f = open(filename, "r")
         l = f.read().replace("\r", "\n").replace("\n\n", "\n").split("\n")
         f.close
+        addy_arr = []
+        name_arr = []
+        #
+        # Create the ini file if it doesn't exist.
+        #
+        addy_arr.append("0000000000000000")
+        name_arr.append("myself")
+        buddyconfig.readConfig() # init and read file
         count=0
+        found = False
         for line in l:
             line = line.rstrip().decode("UTF-8")
             # Locate the space & just parse it.
             name = u""
             addy = u""
-            if len(line) > 15:
-                sp = line.split(" ")
+            if len(line) > 15: # This os OK since V0.9.9.553 never ran with Tor V3
                 try:
-                    addy = sp[0]
+                    sp = line.split(" ")
+                    addy = sp[0][0:16]
                     name = " ".join(sp[1:])
                 except:
-                    addy = line
-                # create buddy object
-                buddy = Buddy(addy[0:16], self, name)
-                # append it to the list
-                self.list.append(buddy)
-                # record details in the buddylist.ini file
-                count +=1
-                buddyconfig.bset(buddyconfig.BUDDYCOUNT, buddyconfig.BCOUNT, count)
-                
-                buddyconfig.bset(buddyconfig.BUDDYLIST, buddyconfig.findex(count), buddy.address)
-                
-        # rename the file to show we are moved to the .ini file
-        try:
-            os.rename(filename, newname)
-        except:
-            pass
+                    addy = line[0:16]
+                # record details for the buddylist.ini file
+                if addy == my_addy:	# force us to be first in the list.
+                    found = True
+                    addy_arr[0] = addy
+                    name_arr[0] = name
+                else:
+                    #
+                    # Fix-up mangled old lists...... Filter-out duplicate addresses.
+                    #
+                    dupe = False
+                    for ndx in range(0, len(addy_arr)): 
+                        if addy == addy_arr[ndx]:       
+                            dupe = True
+                    if not dupe:
+                        count +=1
+                        addy_arr.append( addy )
+                        name_arr.append( name )
+
+        if not found:
+            print "(2) adding own hostname to list" 
+            if config.get("client", "own_hostname") != "0000000000000000":
+                name_arr[0] = u"myself"    #JM - keep the old TorChat default behavior
+                addy_arr[0] = config.get("client", "own_hostname")
+                count +=1 #JM: because it's the entire buddy-list +1 now. (due to new ID)
+
+        #
+        # Now save 'em away
+        #
+        buddyconfig.bset(buddyconfig.BUDDYCOUNT, buddyconfig.BCOUNT, count)
+        for ndx in range(0, len(addy_arr)):        
+            buddyconfig.bset(buddyconfig.BUDDYLIST, buddyconfig.findex(ndx), addy_arr[ndx])
+            buddyconfig.bset(addy_arr[ndx], buddyconfig.BUDDYDNAME, name_arr[ndx] )
+            buddyconfig.bset(addy_arr[ndx], buddyconfig.BUDDYPNAME, name_arr[ndx] )
 
 
 # MW - Not called anywhere - Queued for deletion
@@ -776,6 +831,11 @@ class BuddyList(object):
     def addBuddy(self, buddy):
         if self.getBuddyFromAddress(buddy.address) == None:
             self.list.append(buddy)
+            self.count = len(self.list)
+            buddy.display_index = self.count-1 # 0-based array
+            buddyconfig.bset(buddyconfig.BUDDYCOUNT, buddyconfig.BCOUNT, self.count)
+            buddyconfig.bset(buddyconfig.BUDDYLIST, buddyconfig.findex(buddy.display_index), buddy.address)
+            buddy.modified = True
             buddy.setTemporary(False)
             buddy.setActive(True)
             if buddy in self.incoming_buddies:
@@ -1423,7 +1483,7 @@ class ProtocolMsg_ping(ProtocolMsg):
         self.address, self.answer = splitLine(self.blob)
 
     def isValidAddress(self):
-        if len(self.address) <> 16:
+        if (len(self.address) <> TOR_ADDRESS_LEN) and (len(self.address) <> TOR_V3_ADDRESS_LEN) :
             return False
         for c in self.address:
             if not c in config.BASE_32:  # base32

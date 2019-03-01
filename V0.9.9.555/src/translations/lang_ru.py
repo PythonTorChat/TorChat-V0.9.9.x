@@ -90,7 +90,7 @@ DEC_TITLE_EDIT = u"Редактировать контакт"
 DEC_TORCHAT_ID = u"TorChat ID"
 DEC_DISPLAY_NAME = u"Отображаемое имя"
 DEC_INTRODUCTION = u"Текст приветствия"
-DEC_MSG_16_CHARACTERS = u"Адрес должен быть длиной 16 символов, а не %i."
+DEC_MSG_16_CHARACTERS = u"Адрес должен быть длиной 16 or 56 символов, а не %i."
 DEC_MSG_ONLY_ALPANUM = u"Адрес может содержать только цифры и буквы в нижнем регистре"
 DEC_MSG_ALREADY_ON_LIST = u"%s уже в списке"
 

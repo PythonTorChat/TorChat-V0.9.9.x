@@ -90,7 +90,7 @@ DEC_TITLE_EDIT = u"编辑联络人"
 DEC_TORCHAT_ID = u"TorChat ID"
 DEC_DISPLAY_NAME = u"显示名称"
 DEC_INTRODUCTION = u"导言"
-DEC_MSG_16_CHARACTERS = u"该地址必须是16个字符长, 不 %i."
+DEC_MSG_16_CHARACTERS = u"该地址必须是16个字符长, 不 %i. or 56"
 DEC_MSG_ONLY_ALPANUM = u"该地址必须只包含数字和小写字母"
 DEC_MSG_ALREADY_ON_LIST = u"%s 已在您的名单"
 

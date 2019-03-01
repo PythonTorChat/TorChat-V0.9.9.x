@@ -522,7 +522,7 @@ class DlgEditContact(wx.Dialog):
 
     def onOk(self, evt):
         address = self.txt_address.GetValue().rstrip().lstrip().lower()
-        if len(address) != 16:
+        if (len(address) != TOR_ADDRESS_LEN) and (len(address) != TOR_V3_ADDRESS_LEN):
             l = len(address)
             wx.MessageBox(lang.DEC_MSG_16_CHARACTERS % l)
             return
@@ -894,7 +894,7 @@ class BuddyList(wx.ListCtrl):
     def onDClick(self, evt):
         i = self.GetFirstSelected()
         if i <> -1:
-            address = str(self.GetItemText(i)[0:16])
+            address = str(self.GetItemText(i)[0:16]) # might be OK to use first 16 of the 56 in a display
             laddress = address.lower()
             for buddy in self.bl.list:
                 baddress = str(buddy.address)

@@ -1,13 +1,13 @@
 #############################################################################
 ##
-## torrc.txt for OnionChat
+## torrc.txt for TorChat
 ##
-## OnionChat communicates exclusively via your hidden service address 
-## (i.e. your OnionChat ID) over port 11009 over the TOR network
+## TorChat communicates exclusively via your hidden service address 
+## (i.e. your TorChat ID) over port 11009 over the TOR network
 ##
 ## This is the configuration file for the portable instance of Tor.
 ## You will only have to make changes here if you want to run a second
-## instance of OnionChat on the same machine. See the Docs/HowTo.
+## instance of TorChat on the same machine. See the Docs/HowTo.
 ##
 #############################################################################
 ##
@@ -39,7 +39,7 @@ SocksPort 11109
 # ControlPort 11119 
 
 ## INCOMING connections for the hidden service arrive at 11009 
-## and will be forwarded to OnionChat at 127.0.0.1:11009
+## and will be forwarded to TorChat at 127.0.0.1:11009
 HiddenServiceDir hidden_service
 HiddenServicePort 11009 127.0.0.1:11009
 
@@ -57,30 +57,30 @@ CircuitBuildTimeout 90
 CircuitStreamTimeout 45
 
 # Close HS connections that mis-behave / fall-over
-CloseHSClientCircuitsImmediatelyOnTimeout 0
-CloseHSServiceRendCircuitsImmediatelyOnTimeout 0
+#CloseHSClientCircuitsImmediatelyOnTimeout 0
+#CloseHSServiceRendCircuitsImmediatelyOnTimeout 0
 
-# Enable other than default of 32 circuits pending #JM
+# Enable other than default of 32 circuits pending #MW
 MaxClientCircuitsPending 48
 
 # Reduce the timeout for socks client connection to 71 seconds (default 2 minutes), just 1 second more than CircuitBuildTimeout
 SocksTimeout 91
 
-# OnionChat does a loopback connection #JM, not any more (after v2015.07.31.8)
+# TorChat does a loopback connection #MW, not any more (after v2015.07.31.8)
 #ClientRejectInternalAddresses 0
-UseNTorHandshake 1
+#UseNTorHandshake 1
 
 # Fetch directory authority immediately, to reduce the impact of Tor process reload
 FetchDirInfoEarly 0
 FetchDirInfoExtraEarly 0
 
-ExcludeSingleHopRelays 1
+#ExcludeSingleHopRelays 1
 
 # release after idle 10 minutes (default 1 hour)
-CircuitIdleTimeout 600
+#CircuitIdleTimeout 600
 
 # we will try to pick a total of NUM routers as long-term entries for our circuits. (default 3)
-#NumEntryGuards 5   (from old TorChat) - OnionChat uses default
+#NumEntryGuards 5   (from old TorChat) - TorChat uses default
 
 ## You can uncomment the lines below to log Tor's activity to the
 ## console or to a log file. Use this only during debugging! 

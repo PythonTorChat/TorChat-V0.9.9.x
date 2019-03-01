@@ -90,7 +90,7 @@ DEC_TITLE_EDIT = u"Bewerk contactpersoon"
 DEC_TORCHAT_ID = u"TorChat ID"
 DEC_DISPLAY_NAME = u"Weergave naam"
 DEC_INTRODUCTION = u"Introductie"
-DEC_MSG_16_CHARACTERS = u"Het adres dient 16 karakters lang te zijn, niet %i."
+DEC_MSG_16_CHARACTERS = u"Het adres dient 16 or 56 karakters lang te zijn, niet %i."
 DEC_MSG_ONLY_ALPANUM = u"Het adres kan alleen cijfers en kleine letters bevatten."
 DEC_MSG_ALREADY_ON_LIST = u"%s staat al in uw lijst."
 

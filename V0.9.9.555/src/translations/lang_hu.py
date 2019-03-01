@@ -90,7 +90,7 @@ DEC_TITLE_EDIT = u"Partner szerkesztése"
 DEC_TORCHAT_ID = u"TorChat azonosító"
 DEC_DISPLAY_NAME = u"Megjelenített név"
 DEC_INTRODUCTION = u"Bemutatkozás"
-DEC_MSG_16_CHARACTERS = u"Az azonosító 16 karakter hosszú lehet, nem %i."
+DEC_MSG_16_CHARACTERS = u"Az azonosító 16 or 56 karakter hosszú lehet, nem %i."
 DEC_MSG_ONLY_ALPANUM = u"Az azonosító csak számokat és az angol abc betüit tartalmazhatja"
 DEC_MSG_ALREADY_ON_LIST = u"%s már a listádban van"
 
