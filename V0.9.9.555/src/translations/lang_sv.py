@@ -90,7 +90,7 @@ DEC_TITLE_EDIT = u"Redigera kontakt"
 DEC_TORCHAT_ID = u"TorChat-ID"
 DEC_DISPLAY_NAME = u"Visningsnamn"
 DEC_INTRODUCTION = u"Introduktion"
-DEC_MSG_16_CHARACTERS = u"Adressen måste vara 16 tecken lång, inte %i."
+DEC_MSG_16_CHARACTERS = u"Adressen måste vara 16 or 56 tecken lång, inte %i."
 DEC_MSG_ONLY_ALPANUM = u"Adressen kan bara bestå av siffror och små bokstäver"
 DEC_MSG_ALREADY_ON_LIST = u"%s finns redan i din lista"
 

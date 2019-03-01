@@ -36,6 +36,8 @@ import version
 
 TORCHAT_PORT = 11009 #do NOT change this.
 TOR_CONFIG = "tor" #the name of the active section in the .ini file
+TOR_ADDRESS_LEN = 16
+TOR_V3_ADDRESS_LEN = 56
 STATUS_OFFLINE = 0
 STATUS_OFFLINE_LOG = 1
 STATUS_HANDSHAKE = 2
@@ -677,7 +679,8 @@ class BuddyList(object):
         #
         self.count = buddyconfig.getint(buddyconfig.BUDDYCOUNT, buddyconfig.BCOUNT)
         if self.count == 0: #JM: virgin install
-            module_logger.log(config.LOG, "adding own hostname %s to list" % my_address)
+            #module_logger.log(config.LOG, "adding own hostname %s to list" % my_address)
+            print "(1) adding own hostname to list"
             self.count = 1 # we do count after all.
             buddyconfig.bset(buddyconfig.BUDDYCOUNT, buddyconfig.BCOUNT, self.count)
             buddyconfig.bset(buddyconfig.BUDDYLIST, buddyconfig.findex(0), my_address)
@@ -779,7 +782,7 @@ class BuddyList(object):
             # Locate the space & just parse it.
             name = u""
             addy = u""
-            if len(line) > 15:
+            if len(line) > 15: # This os OK since V0.9.9.553 never ran with Tor V3
                 try:
                     sp = line.split(" ")
                     addy = sp[0][0:16]
@@ -1480,7 +1483,7 @@ class ProtocolMsg_ping(ProtocolMsg):
         self.address, self.answer = splitLine(self.blob)
 
     def isValidAddress(self):
-        if len(self.address) <> 16:
+        if (len(self.address) <> TOR_ADDRESS_LEN) and (len(self.address) <> TOR_V3_ADDRESS_LEN) :
             return False
         for c in self.address:
             if not c in config.BASE_32:  # base32

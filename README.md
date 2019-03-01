@@ -29,6 +29,7 @@ Publication 0.9.9.555 - 26-Feb-2019
   evidence a government agent could plant exploiting this hole....) Only use this version 
   with people you know & trust.
 - windows: update the bundled tor.exe to current stable version 0.3.5.7
+- Many issues with Tor V3 onion address length of 56 characters. Not all resolved yet.
 
 version 0.9.9.554 - 30-Jun-2015 (unpublished)
 - issue: new windows installations cannot connect to recent Linux installations
