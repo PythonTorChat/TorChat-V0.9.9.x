@@ -24,6 +24,16 @@ import inspect
 import translations
 import shutil
 
+DEFAULT_DECOR =    "aaaaaaaaaaaaaaaaaaaa"	# .onion V2 address displayed as 1234567890123456(V2)
+DEFAULT_V3_DECOR = "aaaaaaaaaaaaaaaaaaaa" # .onion V3 address displayed as 1234567890123...3456
+#MW Massive APD here. Shorthand display of V3 .onion addresses set to first 13 characters, "..." 
+#     and last 4 characters to make a human-recognizable fairly unique display address.
+#    As with all APDs, decision subject to the slings and arrows of all critics.
+STRICT_V3_DECOR =  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+DISPLAY_V3_ABBV="abbv"
+DISPLAY_V3_STRICT="strict"
+BASE_32 = "234567abcdefghijklmnopqrstuvwxyz"
+
 def isWindows():
     return sys.platform.startswith("win")
 
@@ -71,10 +81,11 @@ config_defaults = {
     ("gui", "main_window_v_pos") : 50,
     ("branding", "support_id") : "utvrla6mjdypbyw6",
     ("branding", "support_name") : "Bernd, author of TorChat",
-    ("branding", "support_id2") : "haxxiechatg65yjn",
-    ("branding", "support_name2") : "Haxxie, TorChat Mechanic",
+    ("branding", "support_id2") : "doctortormindvwu",
+    ("branding", "support_name2") : "M. Weigand, TorChat Mechanic",
     ("profile", "name") : "",
-    ("profile", "decor") : "aaaaaaaaaaaaaaaa",
+    ("profile", "v3decor") : DISPLAY_V3_ABBV,
+    ("profile", "decor") : DEFAULT_V3_DECOR,
     ("profile", "text") : "",
 }
 
@@ -107,11 +118,9 @@ TIP_JAR_09560 = u"15mupK8ZCwJu1gVAH3ZpBSRJMMcBCqdntm"  # 0.9.9.560
 
 COPYRIGHT = u"""
 Copyright (c) 2014-2019  M. Weigand  <doctortor@use.startmail.com> 
-TorChat2 is a fork of Bernd Kreuß's TorChat  
+TorChat is a maintenance release of Bernd Kreuß's Original TorChat  
 """
 
-DEFAULT_DECOR = "aaaaaaaaaaaaaaaa"
-BASE_32 = "234567abcdefghijklmnopqrstuvwxyz"
 EXT_STATUS_INTERVAL = 3600
 DEAD_CONNECTION_TIMEOUT = 240
 KEEPALIVE_INTERVAL = 100
