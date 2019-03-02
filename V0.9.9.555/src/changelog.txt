@@ -33,9 +33,10 @@ Publication 0.9.9.555 - 26-Feb-2019
   evidence a government agent could plant exploiting this hole....) Only use this version 
   with people you know & trust.
 - windows: update the bundled tor.exe to current stable version 0.3.5.7
+ - Many issues fixed with the Tor V3 addressing (56 character .onion adresses)
 
 
-version 0.9.9.554 - 30-Jun-2015 (historical)
+version 0.9.9.554 - 30-Jun-2015 (historical) (Obsolete with Tor V3 Addressing)
 - issue: new windows installations cannot connect to recent Linux installations
 - fix: update the tor package for windows
 - side-effect: updated wxPython to V3.0
@@ -43,7 +44,7 @@ version 0.9.9.554 - 30-Jun-2015 (historical)
 - many changes in code, some cosmetic, some preparation work for the 1.0.0.1 release 
   which shall consist of migrating from Python 2.x to Python 3.4.3
 
-Publication 0.9.9.554 - 24-Feb-2019
+Publication 0.9.9.554 - 24-Feb-2019 (Obsolete with Tor V3 Addressing)
 - unreleased copy of this version had limited circulation within a reddit working group. 
   This (working) version is being published in the hope that it will be found useful,
   however, this version contains a very serious security issue with the file transfer that
@@ -60,11 +61,11 @@ issue: new windows installations of Torchat V0.9.9.553 cannot connect to recent
 fix: update the tor package for windows
 - forked TorChat V0.9.9.554+ from Torchat V0.9.9.553
 
-version 0.9.9.553
+version 0.9.9.553 (Obsolete with Tor V3 Addressing)
 - fix (regression) buddy context menu not working
 - windows: update the bundled tor.exe to current stable version 0.2.2.39
 
-version 0.9.9.552
+version 0.9.9.552 (Obsolete with Tor V3 Addressing)
 - added Italian translation (thanks to HostFat) 
 - improve/update polish translation (thanks to Szary Czlowiek)
 - add ability to copy TorChat ID to clipboard

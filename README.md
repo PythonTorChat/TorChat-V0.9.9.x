@@ -29,14 +29,12 @@ Publication 0.9.9.555 - 26-Feb-2019
   evidence a government agent could plant exploiting this hole....) Only use this version 
   with people you know & trust.
 - windows: update the bundled tor.exe to current stable version 0.3.5.7
-<<<<<<< HEAD
 - Tor V3 addresses have impacted some address matchng and extraction code. 16 char addresses
   grew to 56 character addresses under Tor V3.
-=======
 - Many issues with Tor V3 onion address length of 56 characters. Not all resolved yet.
->>>>>>> 8358549d937ff2f6a8b3e2ee6e8e01eb1d053035
 
-version 0.9.9.554 - 30-Jun-2015 (unpublished)
+
+version 0.9.9.554 - 30-Jun-2015 (unpublished) (Obsolete with Tov V3 addresses)
 - issue: new windows installations cannot connect to recent Linux installations
 - fix: update the tor package for windows
 - side-effect: updated wxPython to V3.0
@@ -44,7 +42,7 @@ version 0.9.9.554 - 30-Jun-2015 (unpublished)
 - many changes in code, some cosmetic, some preparation work for the 1.0.0.1 release 
   which shall consist of migrating from Python 2.x to Python 3.4.3
 
-Publication 0.9.9.554 - 24-Feb-2019
+Publication 0.9.9.554 - 24-Feb-2019 (Obsolete with Tov V3 addresses)
 - unreleased copy of this version had limited circulation within a reddit working group. 
   This (working) version is being published in the hope that it will be found useful,
   however, this version contains a very serious security issue with the file transfer that
@@ -54,8 +52,12 @@ Publication 0.9.9.554 - 24-Feb-2019
   evidence a government agent could plant exploiting this hole....) Only use this version 
   with people you know & trust.
 - windows: update the bundled tor.exe to current stable version 0.3.5.7
+- Addendum - Version 0.9.9.554 worked with earlier versions of Tor. It does not work with
+  Tor V3 .Onion addresses (56 characters) and it does not see worth fixing. Changes made to
+  V0.9.9.555 can be utilized in V0.9.9.556. This version is too far back in time to salvage.
 
-version 0.9.9.553
+
+version 0.9.9.553 (Obsolete with Tov V3 addresses)
 - Last update from  Bernd Kreuss <prof7bit@gmail.com>     Copyright (c) 2007-2010 
 - Bernd is working on a port to Pascal, so I understand his lack of interest in supporting this.
 -  That said, the original TorChat was a brilliant piece of software and it would be a shame
