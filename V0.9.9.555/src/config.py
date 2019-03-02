@@ -311,7 +311,7 @@ def get(section, option):
         config.add_section(section)
     if not config.has_option(section, option):
         value = config_defaults[section, option]
-        set(section, option, value)
+        cset(section, option, value)
     value = config.get(section, option)
     if type(value) == str:
         try:
