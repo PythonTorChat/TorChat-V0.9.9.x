@@ -25,7 +25,6 @@ import sys
 import os
 import shutil
 import time
-import subprocess
 import textwrap
 import version
 import dlg_settings
@@ -522,7 +521,7 @@ class DlgEditContact(wx.Dialog):
 
     def onOk(self, evt):
         address = self.txt_address.GetValue().rstrip().lstrip().lower()
-        if (len(address) != TOR_ADDRESS_LEN) and (len(address) != TOR_V3_ADDRESS_LEN):
+        if (len(address) != config.TOR_ADDRESS_LEN) and (len(address) != config.TOR_V3_ADDRESS_LEN):
             l = len(address)
             wx.MessageBox(lang.DEC_MSG_16_CHARACTERS % l)
             return

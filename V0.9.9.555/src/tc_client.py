@@ -703,7 +703,7 @@ class BuddyList(object):
                 # append it to the list
                 buddy.modified = True
                 if not self.addBuddy(buddy):
-                    module_logger.log(config.LOG, "a duplicate in buddy-list.ini was found")
+                    print "(2) a duplicate in buddy-list.ini was found"
                 
                 if ndx == 0:
                     buddy.profile_decor = config.get("profile", "decor")

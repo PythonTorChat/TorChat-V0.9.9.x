@@ -24,6 +24,8 @@ import inspect
 import translations
 import shutil
 
+TOR_ADDRESS_LEN = 16
+TOR_V3_ADDRESS_LEN = 56
 DEFAULT_DECOR =    "aaaaaaaaaaaaaaaaaaaa"	# .onion V2 address displayed as 1234567890123456(V2)
 DEFAULT_V3_DECOR = "aaaaaaaaaaaaaaaaaaaa" # .onion V3 address displayed as 1234567890123...3456
 #MW Massive APD here. Shorthand display of V3 .onion addresses set to first 13 characters, "..." 
@@ -75,7 +77,7 @@ config_defaults = {
     ("gui", "chat_window_width") : 800,
     ("gui", "chat_window_height") : 400,
     ("gui", "chat_window_height_lower") : 50,
-    ("gui", "main_window_width") : 260,
+    ("gui", "main_window_width") : 560,
     ("gui", "main_window_height") : 350,
     ("gui", "main_window_h_pos") : 10,
     ("gui", "main_window_v_pos") : 50,
